@@ -1,0 +1,50 @@
+# /
+/LICENSE
+
+# /docs/
+/docs/_build/
+
+# Python
+*.py[cod]
+*.egg-info
+
+# pytest
+.cache/
+
+# vim
+.*.swp
+*~
+
+# distutils
+/build/
+/dist/
+MANIFEST
+MANIFEST.in
+
+
+# Requirements generation
+.reqs
+requirements/min-versions.txt
+
+.coverage
+
+##############################
+# translate/ specific excludes
+##############################
+
+translate/storage/properties.class
+
+# Testing
+# #######
+# Roundtrip testing noise
+translate/convert/diff_*.diff
+translate/convert/mozilla-l10n/
+translate/convert/mozilla-gaia/
+translate/convert/rewritten-po/
+translate/convert/templates-recreated/
+
+# other
+tests/xliff_conformance/af-pootle.xlf
+
+# cli testing
+tests/cli/results

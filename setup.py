@@ -29,5 +29,7 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     keywords='python xliff',
+    install_requires=[
+        'lxml'],
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     include_package_data=True)

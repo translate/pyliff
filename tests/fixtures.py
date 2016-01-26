@@ -125,8 +125,30 @@ FILE_NOTES_XLIFF = u"""
        version="2.0" srcLang="en">
   <file id="f1">
     <notes>
-      <note id="n1">Note 1</note>
+      <note id="n1"
+            appliesTo="u1"
+            category="c1"
+            priority="3">Note 1</note>
+      <note id="n2"
+            appliesTo="u2"
+            category="c2">Note 2</note>
+      <note>Note 3</note>
     </notes>
+    <unit id="u1" name="unit 1">
+      <segment>
+        <source>Unit 1</source>
+      </segment>
+    </unit>
+    <unit id="u2" name="unit 2">
+      <segment>
+        <source>Unit 2</source>
+      </segment>
+    </unit>
+    <unit id="u3" name="unit 3">
+      <segment>
+        <source>Unit 3</source>
+      </segment>
+    </unit>
   </file>
 </xliff>
 """

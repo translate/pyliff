@@ -3,7 +3,12 @@ sudo: false
 language: python
 python:
   - 2.7
+cache:
+  directories:
+    - $HOME/.cache/pip
+    - docs/_build
 install:
+  - pip install --upgrade pip
   - pip install -r requirements/test.txt
   - pip install .
 script:

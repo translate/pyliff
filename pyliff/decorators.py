@@ -65,3 +65,30 @@ def children(*args, **kwargs):
         return wrapped(method)
 
     return wrapped
+
+
+def node(*args, **kwargs):
+    if not args:
+        return functools.partial(node, **kwargs)
+
+    def wrapped(m):
+
+        @functools.wraps(m)
+        def method_wrapper(self):
+            if args:
+                node = args[0]
+            else:
+                node = m.func_name
+            node_prefix = getattr(self, "node_prefix", "xliff:")
+            result = self.xpath("%s%s" % (node_prefix, node))
+            if result:
+                return m(self, result[0])
+
+        return property(method_wrapper)
+
+    if len(args) == 1 and callable(args[0]):
+        method = args[0]
+        args = []
+        return wrapped(method)
+
+    return wrapped

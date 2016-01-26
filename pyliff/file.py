@@ -15,7 +15,7 @@ from .group import Group
 
 class File(XMLObject):
 
-    @attribute
+    @attribute(required=True)
     def id(self, value):
         return value
 

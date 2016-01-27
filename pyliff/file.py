@@ -7,7 +7,7 @@
 # AUTHORS file for copyright and authorship information.
 
 from .base import XMLObject
-from .decorators import attribute, children
+from .decorators import attribute, children, node
 from .note import Notes
 from .unit import Unit
 from .group import Group
@@ -44,9 +44,9 @@ class File(XMLObject):
     def trg_dir(self, value):
         return value
 
-    @property
-    def notes(self):
-        return Notes(self.li, self.xpath("xliff:notes"))
+    @node
+    def notes(self, value):
+        return Notes(self.li, value)
 
     @children("unit")
     def units(self, values):

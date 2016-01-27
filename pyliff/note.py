@@ -8,10 +8,13 @@
 
 from .base import XMLObject
 
-from .decorators import children
+from .decorators import attribute, children
 
 
 class Notes(XMLObject):
+
+    def __iter__(self):
+        return self.notes
 
     @children("note")
     def notes(self, values):
@@ -23,22 +26,23 @@ class Notes(XMLObject):
 
 class Note(XMLObject):
 
-    @property
-    def id(self):
-        return self.xml.attrib["id"]
+    @attribute
+    def id(self, value):
+        return value
 
-    @property
-    def applies_to(self):
-        return self.xml.attrib.get("applies_to", None)
+    @attribute("appliesTo")
+    def applies_to(self, value):
+        return value
 
-    @property
-    def category(self):
-        return self.xml.attrib.get("category", None)
+    @attribute
+    def category(self, value):
+        return value
 
-    @property
-    def priority(self):
-        return self.xml.attrib.get("priority", None)
+    @attribute(
+        choices=[str(i) for i in range(1, 11)])
+    def priority(self, value):
+        return int(value)
 
     @property
     def text(self):
-        return self.xml.text
+        return self.xml.text or ""

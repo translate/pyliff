@@ -31,9 +31,9 @@ class XMLObject(object):
 
 class LIFFObject(XMLObject):
 
-    @property
-    def id(self):
-        return self.xml.attrib["id"]
+    @attribute
+    def id(self, value):
+        return value
 
     @attribute(
         "canResegment",

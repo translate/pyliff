@@ -56,6 +56,27 @@ FILE_GROUPS_XLIFF = u"""
            canResegment="yes"
            srcDir="ltr"
            trgDir="rtl">
+      <group id="g1_g1">
+        <unit id="g1_g1_u1" name="unit 1 (g1/g1)">
+          <segment>
+            <source>Unit 1 (g1/g1)</source>
+          </segment>
+        </unit>
+      </group>
+      <group id="g1_g2">
+        <unit id="g1_g2_u1" name="unit 1 (g1/g2)">
+          <segment>
+            <source>Unit 1 (g1/g2)</source>
+          </segment>
+        </unit>
+      </group>
+      <group id="g1_g3">
+        <unit id="g1_g3_u1" name="unit 1 (g1/g3)">
+          <segment>
+            <source>Unit 1 (g1/g3)</source>
+          </segment>
+        </unit>
+      </group>
       <unit id="u1" name="unit 1">
         <segment>
           <source>Unit 1</source>

@@ -100,17 +100,45 @@ FILE_UNITS_XLIFF = u"""
         original="/foo/bar"
         srcDir="ltr"
         trgDir="rtl">
-    <unit id="u1" name="unit 1">
+    <unit id="u1"
+          name="unit 1"
+          canResegment="no"
+          translate="yes"
+          srcDir="ltr"
+          trgDir="rtl"
+          type="th:test_unit_1">
+      <notes>
+        <note id="n1"
+              appliesTo="u1"
+              category="c1"
+              priority="3">Note 1</note>
+        <note id="n2"
+              appliesTo="u2"
+              category="c2">Note 2</note>
+        <note></note>
+      </notes>
       <segment>
         <source>Unit 1</source>
       </segment>
+      <segment>
+        <source>Unit 1 - part 2</source>
+      </segment>
+      <segment>
+        <source>Unit 1 - part 3</source>
+      </segment>
     </unit>
-    <unit id="u2" name="unit 2">
+    <unit id="u2"
+          name="unit 2"
+          canResegment="yes"
+          translate="no"
+          srcDir="rtl"
+          trgDir="ltr"
+          type="th:test_unit_2">
       <segment>
         <source>Unit 2</source>
       </segment>
     </unit>
-    <unit id="u3" name="unit 3">
+    <unit id="u3">
       <segment>
         <source>Unit 3</source>
       </segment>

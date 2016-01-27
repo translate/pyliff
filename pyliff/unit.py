@@ -14,10 +14,6 @@ from .segment import Segment
 
 class Unit(LIFFObject):
 
-    @attribute(required=True)
-    def id(self, value):
-        return value
-
     @attribute(default="")
     def name(self, value):
         return value

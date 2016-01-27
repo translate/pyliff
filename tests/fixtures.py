@@ -132,7 +132,7 @@ FILE_NOTES_XLIFF = u"""
       <note id="n2"
             appliesTo="u2"
             category="c2">Note 2</note>
-      <note>Note 3</note>
+      <note></note>
     </notes>
     <unit id="u1" name="unit 1">
       <segment>

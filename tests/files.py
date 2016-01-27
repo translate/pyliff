@@ -10,7 +10,9 @@ import pytest
 
 import types
 
+
 from pyliff.file import File
+from pyliff.note import Notes
 
 
 @pytest.mark.test
@@ -77,3 +79,12 @@ def test_pyliff_file_groups(file_groups_xliff):
     # which is refreshed every time you ask for it
     assert len([x for x in f1.groups]) == 3
     assert len([x for x in f1.groups]) == 3
+
+
+@pytest.mark.test
+def test_pyliff_file_notes(file_notes_xliff):
+    files = file_notes_xliff.files
+    f1 = files.next()
+
+    # notes is a Note instance
+    assert isinstance(f1.notes, Notes)

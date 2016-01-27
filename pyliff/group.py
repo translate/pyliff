@@ -7,15 +7,22 @@
 # AUTHORS file for copyright and authorship information.
 
 from .base import LIFFObject
+from .decorators import children
 from .unit import Unit
 
 
 class Group(LIFFObject):
 
-    @property
-    def units(self):
-        return (Unit(self.li, x) for x in self.xpath("xliff:unit"))
+    @children("unit")
+    def units(self, values):
+        return (
+            Unit(self.li, x)
+            for x
+            in values)
 
-    @property
-    def groups(self):
-        return (Group(self.li, x) for x in self.xpath("xliff:group"))
+    @children("group")
+    def groups(self, values):
+        return (
+            Group(self.li, x)
+            for x
+            in values)

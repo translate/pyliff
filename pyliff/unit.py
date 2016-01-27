@@ -7,20 +7,32 @@
 # AUTHORS file for copyright and authorship information.
 
 from .base import LIFFObject
-from .note import Note
+from .decorators import attribute, children, node
+from .note import Notes
 from .segment import Segment
 
 
 class Unit(LIFFObject):
 
-    @property
-    def unit_type(self):
-        return self.xml.attrib["type"]
+    @attribute(required=True)
+    def id(self, value):
+        return value
 
-    @property
-    def notes(self):
-        return (Note(self.li, x) for x in self.xpath("xliff:notes/xliff:note"))
+    @attribute(default="")
+    def name(self, value):
+        return value
 
-    @property
-    def segments(self):
-        return [Segment(self.li, x) for x in self.xpath("xliff:segment")]
+    @attribute("type")
+    def unit_type(self, value):
+        return value
+
+    @node
+    def notes(self, value):
+        return Notes(self.li, value)
+
+    @children("segment")
+    def segments(self, values):
+        return (
+            Segment(self.li, x)
+            for x
+            in values)

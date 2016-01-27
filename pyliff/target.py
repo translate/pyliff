@@ -13,4 +13,5 @@ class Target(XMLObject):
 
     @property
     def text(self):
-        return self.serialize()
+        # this should probably be a list of elements rather than `text`
+        return self.xml.text or ""

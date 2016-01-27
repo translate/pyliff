@@ -7,39 +7,47 @@
 # AUTHORS file for copyright and authorship information.
 
 from .base import XMLObject
+from .decorators import attribute, node
 from .source import Source
 from .target import Target
 
 
+SEGMENT_STATES = [
+    "initial",
+    "translated",
+    "reviewed",
+    "final"]
+
+
 class Segment(XMLObject):
 
-    @property
-    def id(self):
-        return self.xml.attrib["id"]
+    @attribute
+    def id(self, value):
+        return value
 
-    @property
-    def can_resegment(self):
-        return self.xml.attrib.get("canResegment", None)
+    @attribute(
+        "canResegment",
+        choices=["yes", "no"],
+        default=None)
+    def can_resegment(self, value):
+        if value is None:
+            return
+        return value == "yes" and True or False
 
-    @property
-    def source(self):
-        source = self.xpath("xliff:source")
-        if source:
-            return Source(self.li, source[0])
-        else:
-            # raise misconfiguration
-            pass
+    @node
+    def source(self, value):
+        return Source(self.li, value)
 
-    @property
-    def state(self):
-        return self.xml.attrib.get("state", None)
+    @attribute(
+        choices=SEGMENT_STATES,
+        default="initial")
+    def state(self, value):
+        return value
 
-    @property
-    def sub_state(self):
-        return self.xml.attrib.get("sub_state", None)
+    @attribute("subState")
+    def sub_state(self, value):
+        return value
 
-    @property
-    def target(self):
-        target = self.xpath("xliff:target")
-        if target:
-            return Target(self.li, target[0])
+    @node
+    def target(self, value):
+        return Target(self.li, value)

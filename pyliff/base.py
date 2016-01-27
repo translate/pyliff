@@ -8,6 +8,8 @@
 
 from lxml import etree
 
+from .decorators import attribute
+
 
 XLIFF_NS = 'urn:oasis:names:tc:xliff:document:2.0'
 
@@ -33,18 +35,33 @@ class LIFFObject(XMLObject):
     def id(self):
         return self.xml.attrib["id"]
 
-    @property
-    def can_resegment(self):
-        return self.xml.attrib["canResegment"]
+    @attribute(
+        "canResegment",
+        choices=["yes", "no"],
+        default=None)
+    def can_resegment(self, value):
+        if value is None:
+            return
+        return value == "yes" and True or False
 
-    @property
-    def src_dir(self):
-        return self.xml.attrib["srcDir"]
+    @attribute(
+        "srcDir",
+        choices=["ltr", "rtl", "auto"],
+        default="auto")
+    def src_dir(self, value):
+        return value
 
-    @property
-    def translate(self):
-        return self.xml.attrib["translate"]
+    @attribute(
+        "trgDir",
+        choices=["ltr", "rtl", "auto"],
+        default="auto")
+    def trg_dir(self, value):
+        return value
 
-    @property
-    def target_dir(self):
-        return self.xml.attrib["targetDir"]
+    @attribute(
+        choices=["yes", "no"],
+        default=None)
+    def translate(self, value):
+        if value is None:
+            return
+        return value == "yes" and True or False

@@ -117,11 +117,19 @@ FILE_UNITS_XLIFF = u"""
               category="c2">Note 2</note>
         <note></note>
       </notes>
-      <segment>
+      <segment id="s1"
+               canResegment="yes"
+               state="translated"
+               subState="th:sub-translated">
         <source>Unit 1</source>
+        <target>Unit 1 target</target>
       </segment>
-      <segment>
+      <segment id="s2"
+               canResegment="no"
+               state="reviewed"
+               subState="th:sub-reviewed">
         <source>Unit 1 - part 2</source>
+        <target>Unit 1 target - part 2</target>
       </segment>
       <segment>
         <source>Unit 1 - part 3</source>
